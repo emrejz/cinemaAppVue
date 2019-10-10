@@ -10,6 +10,9 @@
     name: "MoviesPage",
     components: {
       MovieCard
+    },
+    created() {
+      this.$store.dispatch("getMovies");
     }
   };
 </script>
