@@ -3,7 +3,11 @@ const state = {
   movies: [],
   error: ""
 };
-const getters = {};
+const getters = {
+  movies(state) {
+    return state.movies;
+  }
+};
 const mutations = {
   setMovies(state, val) {
     state.movies = val;
@@ -23,7 +27,7 @@ const actions = {
           context.commit("setError", res.data.error);
         }
       })
-      .catch(err => {
+      .catch(() => {
         context.commit("setError", "Service error!");
       });
   }
