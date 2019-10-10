@@ -15,9 +15,9 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <router-link to="/movies" activ
-            ><div class="nav-link">Movies</div></router-link
-          >
+          <router-link to="/movies" activ>
+            <div class="nav-link">Movies</div>
+          </router-link>
         </li>
       </ul>
     </div>
