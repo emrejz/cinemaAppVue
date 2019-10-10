@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <MovieCard v-for="movie in movies" :movie="movie" :key="movie.imdbID" />
   </div>
 </template>
@@ -22,5 +22,11 @@
     }
   };
 </script>
-
-<style></style>
+<style>
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 24px;
+}
+</style>
