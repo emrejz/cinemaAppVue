@@ -1,6 +1,6 @@
 <template>
   <div>
-    <MovieCard></MovieCard>
+    <MovieCard  />
   </div>
 </template>
 
