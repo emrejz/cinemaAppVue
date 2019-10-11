@@ -8,7 +8,7 @@ export default {
   },
   getMovieDetails(id) {
     return axios.get(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.VUE_APP_API_KEY}&language=en-US`
+      `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.VUE_APP_API_KEY}&append_to_response=videos,credits`
     );
   }
 };

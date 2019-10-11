@@ -23,5 +23,8 @@
   }
   body {
     margin: 0px;
+    padding: 0px;
+    height: 100vh;
+    width: 100vw;
   }
 </style>
