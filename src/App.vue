@@ -1,23 +1,18 @@
 <template>
   <div id="app">
-    <NavBar />
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-  import NavBar from "./components/NavBar";
   export default {
-    name: "App",
-    components:{
-      NavBar
-    }
+    name: "App"
   };
 </script>
 
 <style>
   #app {
-    font-family:monospace;
+    font-family: monospace;
     font-size: 1.2rem;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

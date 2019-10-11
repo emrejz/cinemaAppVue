@@ -1,5 +1,5 @@
 <template>
-  <button :class="setClass" @click="backMoviesPage"><</button>
+  <button :class="setClass" @click="backMoviesPage">&#60;</button>
 </template>
 
 <script>
@@ -47,8 +47,9 @@
     transition: 0.3s linear;
   }
   .arrow {
-    position: absolute;
-    top: 40%;
+    position: fixed;
+    z-index: 20;
+    top: 10px;
     width: 120px;
     font-size: 60px;
     height: 120px;

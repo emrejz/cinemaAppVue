@@ -7,11 +7,11 @@
             <backdrop-image  :imageDropPath="movie.backdrop_path"/>
             <div class="container pt-3">
                  <arrow-button :isLeft="true" />
-              <div class="row">
-                <div class="col-sm-4 mb-3">
+              <div class="row pt-5">
+                <div class="col-sm-4">
                   <poster-image style="border-radius: 6px;" :posterPath="movie.poster_path"/>
                 </div>
-                <div class="col-sm-8">
+                <div class="col-sm-8 ">
                   <h2 class="mt-3">{{movie.title}}</h2>
                   <p>{{movie.overview}} </p>
                   <div><b>Runtime:</b> {{runtime}} </div>
@@ -22,13 +22,13 @@
                   <div><b>Release Date:</b> {{movie.release_date}}</div>
                   <h4>Cast: </h4>
                   <div class="container">
-                    <span class="castAvatar" v-for="(cast,index) in movie.credits.cast" v-if="index<6">
-                       <poster-image class="castAvatarImg" :castPath="cast.profile_path" :alt="cast.name"/>
+                    <span class="castAvatar" v-for="(cast,index) in movie.credits.cast"  :key="cast.profile_path">
+                       <poster-image class="castAvatarImg" :castPath="cast.profile_path" v-if="index<6" :alt="cast.name"/>
                     </span>
                     </div>
                   <h4>Trailers: </h4> 
                   <div class="container"> 
-                    <a class="trailersContainer" v-for="trailer in trailers" :href="trailer.url" target="_blank">
+                    <a class="trailersContainer" v-for="trailer in trailers" :key="trailer.url" :href="trailer.url" target="_blank">
                       <poster-image :thumbnailUrl="trailer.thumbnail"/>
                     </a>                 
               </div>           
@@ -41,7 +41,6 @@
 </template>
 
 <script>
-  import { mapGetters } from "vuex";
   import BackdropImage from "../backdropImage";
   import PosterImage from "../posterImage";
   import ArrowButton from "../arrowButton";
@@ -85,7 +84,7 @@
       }
     },
     created() {
-      this.$store.dispatch("getMovieDetails", this.movieID).then(res => {
+      this.$store.dispatch("getMovieDetails", this.movieID).then(() => {
         this.isLoading = false;
       });
     }
