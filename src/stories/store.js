@@ -25,10 +25,11 @@ const actions = {
     service
       .getMovies()
       .then(res => {
-        if (res.data.Response === "True") {
-          context.commit("setMovies", res.data.Search);
+        const { results } = res.data;
+        if (results.length > 0) {
+          context.commit("setMovies", results);
         } else {
-          context.commit("setError", res.data.error);
+          context.commit("setError", "Movies not found!");
         }
       })
       .catch(() => {
