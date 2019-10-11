@@ -35,6 +35,11 @@ const actions = {
       .catch(() => {
         context.commit("setError", "Service error!");
       });
+  },
+  getMovieDetails(context, id) {
+    service.getMovieDetails(id).then(res => {
+      console.log(res);
+    });
   }
 };
 export default {

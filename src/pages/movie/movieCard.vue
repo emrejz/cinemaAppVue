@@ -28,7 +28,7 @@
     },
     computed: {
       detailPath() {
-        return "/movie/" + this.movie.imdbID;
+        return "/movie/" + this.movie.id;
       }
     }
   };

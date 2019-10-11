@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div>asd</div>
 </template>
 
 <script>
@@ -9,8 +9,11 @@
       movieID() {
         return this.$route.params.id;
       }
+    },
+    created() {
+      this.$store.dispatch("getMovieDetails", this.movieID);
     }
   };
 </script>
 
-<script></script>
+<style></style>
