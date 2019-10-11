@@ -6,6 +6,7 @@
         <section v-if="movie">
             <backdrop-image  :imageDropPath="movie.backdrop_path"/>
             <div class="container pt-3">
+                 <arrow-button :isLeft="true" />
               <div class="row">
                 <div class="col-sm-4 mb-3">
                   <poster-image style="border-radius: 6px;" :posterPath="movie.poster_path"/>
@@ -43,6 +44,7 @@
   import { mapGetters } from "vuex";
   import BackdropImage from "../backdropImage";
   import PosterImage from "../posterImage";
+  import ArrowButton from "../arrowButton";
   export default {
     name: "MovieDetail",
     data() {
@@ -52,7 +54,8 @@
     },
     components: {
       BackdropImage,
-      PosterImage
+      PosterImage,
+      ArrowButton
     },
     computed: {
       movieID() {
@@ -109,7 +112,6 @@
     display: inline-flex;
     margin: auto;
     margin-bottom: 8px;
-
  }
  .castAvatarImg{
    width: 50px;

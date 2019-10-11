@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h1 class="errorMessage" v-if="error">{{error}}</h1>
-    <MovieCard v-for="movie in movies" :movie="movie" :key="movie.imdbID" />
+    <MovieCard v-for="(movie,index) in movies" :movie="movie" :index="index" :key="movie.id" />
   </div>
 </template>
 
