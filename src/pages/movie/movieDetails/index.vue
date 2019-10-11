@@ -2,18 +2,23 @@
   <div class="container">
     <h1 class="errorMessage" v-if="error">{{ error }}</h1>
     <div v-if="isLoading">LOADING</div>
-    <div v-if="!isLoading">{{ movie.title }}</div>
+    <backdrop-image v-if="!isLoading" :imageDropPath="movie.backdrop_path"/>
+      <div style="font-size: 100px;" v-if="!isLoading">{{ movie.title }}</div>
   </div>
 </template>
 
 <script>
   import { mapGetters } from "vuex";
+  import BackdropImage from "../backdropImage";
   export default {
     name: "MovieDetail",
     data() {
       return {
         isLoading: true
       };
+    },
+    components: {
+      BackdropImage
     },
     computed: {
       movieID() {
