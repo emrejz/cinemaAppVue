@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="movie.imdbID">
+  <router-link :to="detailPath">
     <div class="card">
       <img :src="movie.Poster" class="card-img-top" :alt="movie.Title" />
       <div class="card-body">
@@ -20,6 +20,11 @@
       movie: {
         type: Object,
         required: true
+      }
+    },
+    computed: {
+      detailPath() {
+        return "/movie/" + this.movie.imdbID;
       }
     }
   };

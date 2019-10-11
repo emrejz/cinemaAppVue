@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import MovieCard from "./movieCard";
+  import MovieCard from "../movieCard";
   import {mapGetters} from "vuex"
   export default {
     name: "MoviesPage",
