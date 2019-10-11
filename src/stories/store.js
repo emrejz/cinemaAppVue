@@ -1,7 +1,8 @@
 import service from "../services/service";
 const state = {
   movies: [],
-  error: ""
+  error: "",
+  movieDetailList: {}
 };
 const getters = {
   movies(state) {
@@ -17,6 +18,10 @@ const mutations = {
   },
   setError(state, val) {
     state.error = val;
+  },
+  setMovieDetail(state, val) {
+    const { id, movie } = val;
+    state.movieDetailList[id] = movie;
   }
 };
 const actions = {
@@ -37,9 +42,15 @@ const actions = {
       });
   },
   getMovieDetails(context, id) {
-    service.getMovieDetails(id).then(res => {
-      console.log(res);
-    });
+    if (!context.state.movieDetailList[id]) {
+      service
+        .getMovieDetails(id)
+        .then(res => {
+          const { data } = res;
+          context.commit("setMovieDetail", { id: data.id, movie: data });
+        })
+        .catch(() => context.commit("setError", "Service error!"));
+    }
   }
 };
 export default {
