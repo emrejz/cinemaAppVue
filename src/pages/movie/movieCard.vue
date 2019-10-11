@@ -1,8 +1,8 @@
 <template>
   <router-link :to="detailPath">
     <div class="card">
-      <img
-        src="http://image.tmdb.org/t/p/w185//nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg"
+      <poster-image
+        :posterPath="movie.poster_path"
         class="card-img-top"
         :alt="movie.title"
       />
@@ -18,8 +18,12 @@
 </template>
 
 <script>
+  import PosterImage from "./posterImage" 
   export default {
     name: "MovieCard",
+    components:{
+      PosterImage
+    },
     props: {
       movie: {
         type: Object,
