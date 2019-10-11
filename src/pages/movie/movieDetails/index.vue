@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <h1 class="errorMessage" v-if="error">{{ error }}</h1>
-    <div v-if="movie">{{ movie.title }}</div>
+    <div v-if="isLoading">LOADING</div>
+    <div v-if="!isLoading">{{ movie.title }}</div>
   </div>
 </template>
 
@@ -9,6 +10,11 @@
   import { mapGetters } from "vuex";
   export default {
     name: "MovieDetail",
+    data() {
+      return {
+        isLoading: true
+      };
+    },
     computed: {
       movieID() {
         return this.$route.params.id;
@@ -21,7 +27,9 @@
       }
     },
     created() {
-      this.$store.dispatch("getMovieDetails", this.movieID);
+      this.$store.dispatch("getMovieDetails", this.movieID).then(res => {
+        this.isLoading = false;
+      });
     }
   };
 </script>

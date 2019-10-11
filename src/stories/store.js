@@ -43,7 +43,8 @@ const actions = {
   },
   getMovieDetails(context, id) {
     if (!context.state.movieDetailList[id]) {
-      service
+      context.commit("setError", "");
+      return service
         .getMovieDetails(id)
         .then(res => {
           const { data } = res;
