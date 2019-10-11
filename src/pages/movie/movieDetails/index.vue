@@ -5,29 +5,33 @@
         <h1 v-if="error" class="errorMessage">{{ error }}</h1>
         <section v-if="movie">
             <backdrop-image  :imageDropPath="movie.backdrop_path"/>
-            <div class="container pt-5">
+            <div class="container pt-3">
               <div class="row">
-                <div class="col-sm-4">
-                  <poster-image :posterPath="movie.poster_path"/>
+                <div class="col-sm-4 mb-3">
+                  <poster-image style="border-radius: 6px;" :posterPath="movie.poster_path"/>
                 </div>
                 <div class="col-sm-8">
-                  <h2>{{movie.title}}</h2>
+                  <h2 class="mt-3">{{movie.title}}</h2>
                   <p>{{movie.overview}} </p>
-                  <div>Runtime: {{runtime}} </div>
-                  <div>Average Rating: {{movie.vote_average.toFixed(1)}} </div>
-                  <div  >
-                    Production Company: {{ movie.production_companies[0].name}}
+                  <div><b>Runtime:</b> {{runtime}} </div>
+                  <div><b>Average Rating:</b> {{movie.vote_average.toFixed(1)}} </div>
+                  <div>
+                    <b>Production Company:</b> {{ movie.production_companies[0].name}}
                   </div>
-                  <div>Release Date: {{movie.release_date}}</div>
+                  <div><b>Release Date:</b> {{movie.release_date}}</div>
                   <h4>Cast: </h4>
-                    <span class="castAvatar" v-for="(cast,index) in movie.credits.cast" v-if="index<5">
-                       <poster-image :castPath="cast.profile_path" :alt="cast.name"/>
+                  <div class="container">
+                    <span class="castAvatar" v-for="(cast,index) in movie.credits.cast" v-if="index<6">
+                       <poster-image class="castAvatarImg" :castPath="cast.profile_path" :alt="cast.name"/>
                     </span>
+                    </div>
                   <h4>Trailers: </h4> 
+                  <div class="container"> 
                     <a class="trailersContainer" v-for="trailer in trailers" :href="trailer.url" target="_blank">
                       <poster-image :thumbnailUrl="trailer.thumbnail"/>
                     </a>                 
-                </div>
+              </div>           
+              </div>
               </div>
             </div>
         </section>
@@ -98,18 +102,30 @@
     }
   .col-sm-8{
     color: white;
-  background-color: rgba(0,0,0, 0.4);
-  border-radius: 10px;
+    background-color: rgba(0,0,0, 0.4);
+    border-radius: 10px;
   }
  .castAvatar{
- display: inline-flex;
- padding-left: 1px;
- padding-right: 1px;
-  
+    display: inline-flex;
+    margin: auto;
+    margin-bottom: 8px;
+
+ }
+ .castAvatarImg{
+   width: 50px;
+   height: 70px;
+   border-radius: 50%;
+   border: 2px solid white;
  }
  .trailersContainer{
-   width: 150px;
-height: 120px;
-   display: inline-block;
+    width: 150px;
+    height: 120px;
+    margin: auto;
+    display: inline-block;
+    padding-right: 4px;
+    padding-left: 4px;
+ }
+ .container{
+   margin-top: 0px;
  }
 </style>

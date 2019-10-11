@@ -21,7 +21,7 @@
           return `https://image.tmdb.org/t/p/w1280${this.posterPath}`;
         if (this.castPath)
           return `https://image.tmdb.org/t/p/w45${this.castPath}`;
-        if (this.thumbnailUrl) return thumbnailUrl;
+        if (this.thumbnailUrl) return this.thumbnailUrl;
       }
     }
   };
