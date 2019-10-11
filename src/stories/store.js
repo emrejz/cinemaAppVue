@@ -6,6 +6,9 @@ const state = {
 const getters = {
   movies(state) {
     return state.movies;
+  },
+  error(state) {
+    return state.error;
   }
 };
 const mutations = {
@@ -18,6 +21,7 @@ const mutations = {
 };
 const actions = {
   getMovies(context) {
+    context.commit("setError", "");
     service
       .getMovies()
       .then(res => {

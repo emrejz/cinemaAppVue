@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <h1 class="errorMessage" v-if="error">{{error}}</h1>
     <MovieCard v-for="movie in movies" :movie="movie" :key="movie.imdbID" />
   </div>
 </template>
@@ -14,7 +15,8 @@
     },
     computed:{
    ...mapGetters([
-       "movies"
+       "movies",
+       "error"
    ])
     },
     created() {
@@ -28,5 +30,10 @@
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 24px;
+}
+.errorMessage{
+  margin-top: 20%;
+  color: red;
+
 }
 </style>

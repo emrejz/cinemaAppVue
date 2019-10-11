@@ -1,10 +1,15 @@
 <template>
-  <div>asd</div>
+  <div></div>
 </template>
 
 <script>
   export default {
-    name: "MovieDetail"
+    name: "MovieDetail",
+    computed: {
+      movieID() {
+        return this.$route.params.id;
+      }
+    }
   };
 </script>
 
